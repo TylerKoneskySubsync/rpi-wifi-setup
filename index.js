@@ -76,7 +76,7 @@ function main() {
   fs.writeFileSync(SUPPLICANT_PATH, templateConf + networkString);
 
   console.log('Restarting network connection');
-  exec('ifdown wlan0 && sleep 1 && ifup wlan0', function (err, response) {
+  exec('ifconfig wlan0 down && sleep 1 && ifconfig wlan0 up', function (err, response) {
     if (err) {
       console.error(err);
       process.exit(1);
